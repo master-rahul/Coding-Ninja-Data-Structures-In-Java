@@ -1,13 +1,10 @@
 
 public class FindANodeInLinkedList {
-	public static int findNode(LinkedListNode<Integer> head, int n) {
-		int count = 0;
-        while(head != null){
-            if(head.data == n)
-                return count;
-            count++;
-        	head = head.next;
-        }
-    	return -1;
-    }
-}
+	public static int findNodeRec(LinkedListNode<Integer> head, int n) {
+		if(head == null) return -1;
+        if(head.data.equals(n)) return 0;
+        int num = findNodeRec(head.next, n);
+        if(num == -1) return -1;
+        return 1 + num;
+	}
+}	
